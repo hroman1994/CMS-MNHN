@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="shadow p-3 mb-5 bg-white rounded mt-3">
+        <div class="row justify-content-center">
+
+            <h3>Recuperar Contraseña</h3>
+            <div class="col-12"></div>
+            <label for="correo">Ingresar nueva contraseña</label>
+            <div class="col-12"></div>
+            <input id="correo" type="password" [(ngModel)]="password_1">
+            <div class="col-12"></div>
+            <div class="col-12"></div>
+            <label for="correo">Confirmar nueva contraseña</label>
+            <div class="col-12"></div>
+            <input id="correo" type="password" [(ngModel)]="password_2">
+            <div class="col-12"></div>
+            <p id="mensaje" style="color: red; display: none;"></p>
+            <div class="col-12"></div>
+            <button class="btn btn-success mt-4" (click)="UpdatePass()">Recuperar</button>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div id="ModalAlert" class="modal" style="z-index: 999999999999;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close icons" id="close" (click)="CerrarModalAlert()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <h5 style="text-align:center; color: black; font-size: large;">{{alerta}}</h5>
+        </div>
+    </div>
+</div>
+
+<div id="ModalMensaje" class="modal" style="z-index: 999999999999;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close icons" id="close" (click)="CerrarModalMensaje()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <h5 style="text-align:center; color: black; font-size: large;">{{mensaje_2}}</h5>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,163 @@
+::ng-deep .ngxImageZoomContainer > img{
+    max-height: 800px;
+  }
+
+  .map-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 30px;
+  }
+    
+  .map-frame {
+    border: 2px solid black;
+    min-height: 500px;
+    height: 100%;
+  }
+  
+  #map {
+    height: 100%;
+  }
+
+  .contenedor{
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 1%;
+    margin-bottom: 2%;
+  }
+  
+
+  .modal {
+    display: none;
+    position: absolute;
+    z-index: 100; 
+    padding-top: 100px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  .modal-content {
+    position: absolute;
+    background-color: #fefefe;
+    padding: 0;
+    border: 1px solid #888;
+    width: 40%;
+    height: 60%;
+    height: fit-content;
+    margin-left: 30%;
+    margin-right: 30% !important;
+    margin-top: 5%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+
+
+  .modal-imagen {
+    display: none;
+    position: fixed;
+    z-index: 100; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  .modal-content-imagen {
+    position: absolute;
+    background-color: #fefefe;
+    padding: 0;
+    border: 1px solid #888;
+    width: 40%;
+    height: 100%;
+    margin-left: 30%;
+    margin-right: 30% !important;
+    margin-top: 5%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+  
+
+  .modal-mapa {
+    display: none;
+    position: fixed;
+    z-index: 100; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  .modal-content-mapa {
+    position: absolute;
+    background-color: #fefefe;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    height: 80%;
+    margin-left: 10%;
+    margin-right: 30% !important;
+    margin-top: 5%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+
+
+  .modal-alerta {
+    display: none;
+    position: fixed;
+    z-index: 1051;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content-alerta {
+    position: relative;
+    background-color: #fefefe;
+    padding: 0;
+    border: 1px solid #888;
+    width: 500px;
+    margin-top: 119px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+.table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+th,td {
+
+  word-wrap: break-word;
+}

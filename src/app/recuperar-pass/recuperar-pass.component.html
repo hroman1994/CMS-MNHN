@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="shadow p-3 mb-5 bg-white rounded mt-3">
+        <div class="row justify-content-center">
+
+            <h3>Recuperar Contraseña</h3>
+            <div class="col-12"></div>
+            <label for="correo">Ingresar correo </label>
+            <div class="col-12"></div>
+            <input id="correo" type="text" [(ngModel)]="correo">
+            <div class="col-12"></div>
+            <button class="btn btn-success" (click)="RecuperarPass()">Recuperar</button>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div id="ModalAlert" class="modal" style="z-index: 999999999999;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close icons" id="close" (click)="CerrarModalAlert()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <h5 style="text-align:center; color: black; font-size: large;">{{alerta}}</h5>
+        </div>
+    </div>
+</div>

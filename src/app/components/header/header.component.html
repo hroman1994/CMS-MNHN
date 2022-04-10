@@ -1,0 +1,178 @@
+
+    
+<header class="header">
+    
+
+  <figure id="block-sitebranding" class="logo">
+        <a class="logo__link" href="https://www.mnhn.gob.cl/">
+                  
+    
+  <picture class="logo__image">
+        
+  
+    <img class="logo__img" src="assets/Logo.png" alt="Museo Nacional de Historia Natural">
+  
+    </picture>
+                    </a>
+    
+    </figure>
+  
+  
+  <div data-drupal-selector="views-exposed-form-solr-localhost-searching-block" id="block-snpc-searching-block" class="block views-exposed-form">
+    <div>
+      
+          
+            <form action="/buscar" method="get" id="views-exposed-form-solr-localhost-searching-block" accept-charset="UTF-8">
+    <div class="js-form-item form-item">
+          <input placeholder="Busca" data-drupal-selector="edit-texto" type="text" id="edit-texto" name="texto" value="" size="30" maxlength="128" class="form-text form-item__textfield">
+  
+          </div>
+  
+  
+  </form>
+  
+        <a id="lupa" href="#"><fa-icon [icon]="search"></fa-icon></a></div>
+  </div>
+  
+    
+  
+  <h2 id="block-mainnavigation" class="h2">
+        
+    </h2>
+  
+    
+  
+  <div class="main-menu-nav">
+    <nav class="main-menu-wrapper">
+      <a href="#" id="toggle-expand" class="toggle-expand">
+        <span class="toggle-expand__open">
+          <span class="toggle-expand__text">Menú principal</span>
+        </span>
+        <span class="toggle-expand__close">
+          <span class="toggle-expand__text">Cerrar</span>
+        </span>
+      </a>
+      <div id="main-nav" class="main-nav">
+        
+  
+  
+      
+                            
+      
+  <ul class="main-menu">
+              
+  <li class="main-menu__item">
+                  <a href="/" class="main-menu__link is-active" data-drupal-link-system-path="<front>">Inicio</a>
+            </li>
+            
+  <li class="main-menu__item">
+                  <a href="https://www.mnhn.gob.cl/servicios" class="main-menu__link" data-drupal-link-system-path="servicios">Qué necesitas</a>
+            </li>
+            
+  <li class="main-menu__item">
+                  <a href="https://www.mnhn.gob.cl/servicios/visitar-el-museo" class="main-menu__link" data-drupal-link-system-path="node/3108">Planifica tu visita</a>
+            </li>
+            
+  <li class="main-menu__item">
+                  <a href="https://www.mnhn.gob.cl/cartelera" class="main-menu__link" data-drupal-link-system-path="cartelera">Cartelera</a>
+            </li>
+            
+  <li class="main-menu__item">
+                  <a href="https://www.mnhn.gob.cl/multimedia" class="main-menu__link" data-drupal-link-system-path="node/3105">Multimedia</a>
+            </li>
+            
+  <li class="main-menu__item">
+                  <a href="https://www.mnhn.gob.cl/noticias" class="main-menu__link" data-drupal-link-system-path="noticias">Noticias</a>
+            </li>
+            
+  <li class="main-menu__item">
+                  <a href="https://www.mnhn.gob.cl/publicaciones" class="main-menu__link" data-drupal-link-system-path="node/3107">Publicaciones</a>
+            </li>
+            
+  <li class="main-menu__item">
+                  <a href="https://www.mnhn.gob.cl/colecciones" class="main-menu__link" data-drupal-link-system-path="colecciones">Colecciones digitales</a>
+            </li>
+            
+  <li class="">
+                  <a href="https://www.mnhn.gob.cl/faq" class="main-menu__link" data-drupal-link-system-path="faq">Preguntas</a>
+            </li>
+  <li class="main-menu__item">
+              <a class="nav-link" (click)="nav_menu('helechos')" style="color:white; cursor: pointer;">Helechos <span class="sr-only">(current)</span></a>
+            </li>
+  <li class="main-menu__item" *ngIf = "log == false">
+              <a class="nav-link" (click)="nav_menu('login')" style="color: white; cursor: pointer;">Log In <span class="sr-only">(current)</span></a>
+            </li>
+  <li class="main-menu__item dropdown" *ngIf = "log == true">
+            <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;"> 
+              {{_emp.getDataUsu() | async}} 
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a  class="dropdown-item" (click)="nav_menu(item.MENU_LINK)" *ngFor = "let item of _emp.menus">{{item.MENU_NOMBRE}}</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" (click)="CerrarSesion()">Log Out</a>
+            </div>
+            </li>
+        </ul>
+    
+  
+        
+      </div>
+    </nav>
+  </div>
+  
+  <span><div data-drupal-messages-fallback="" class="hidden"></div></span>
+  
+  </header>
+
+
+<div>
+    <nav class="navbar navbar-expand-lg" style="background-color: black;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <div class="col">
+              
+            </div>
+              
+              
+          </ul>
+        </div>
+      </nav>
+</div>
+
+
+<div id="ModalAlertHeader" class="modal" style="z-index: 10001;">
+  <div class="modal-content">
+      <div class="modal-header">
+          <span class="close icons" id="close" (click)="CerrarModalAlert()">&times;</span>
+      </div>
+      <div class="modal-body">
+          <h5 style="text-align:center; color: black; font-size: large;">{{alerta}}</h5>
+      </div>
+  </div>
+</div>
+
+  
+  
+  
+  
+
+      
+          
+            
+  
+  
+  
+  
+  
+
+      
+          
+            
+  
+  
+  
+ 

@@ -1,0 +1,47 @@
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="assets/Logo_MNHN.jpg" id="icon" alt="User Icon" />
+      </div>
+  
+      <!-- Login Form -->
+      <form>
+        <div>
+            <input type="password" id="password" class="fadeIn third" name="login" placeholder="Contraseña actual" [(ngModel)] = "pass_actual">
+        </div>
+        <div>
+            <input type="password" id="password" class="fadeIn third" name="login" placeholder="Contraseña nueva" [(ngModel)] = "pass_nueva">
+        </div>
+        <div>
+            <input type="password" id="password" class="fadeIn third" name="login" placeholder="Confirmar contraseña" [(ngModel)] = "pass_nueva_conf">
+            <p style="color: gray; font-size: 10px;">La contraseña debe tener entre 8 y 16 digitos</p>
+            <p *ngIf = "pass_incorrecta == true" style="color: red;">Contraseña incorrecta</p>
+            <p *ngIf = "pass_validar == true" style="color: red;">Contraseña invalida</p>
+            <p *ngIf = "pass_coinciden == true" style="color: red;">Las contraseñas no coinciden</p>
+        </div>
+        <div class="mt-3">
+
+        </div>
+        <div class="mt-3 mb-3">
+            <button type="button" class="btn btn-primary" (click) = "ComprobarPass()">Cambiar contraseña</button>
+        </div>
+      </form>
+ 
+    </div>
+  </div>
+
+
+  <div id="ModalAlerta" class="modal" style="z-index: 10001;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close icons" id="close" (click)="CerrarModalAlert()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <h4 style="text-align:center; color: black; font-size: large;">{{alerta}}</h4>
+        </div>
+    </div>
+</div>

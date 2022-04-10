@@ -1,0 +1,262 @@
+<div  *ngIf="lista == true" style="margin: 3%">
+    <div class="row justify-content-center">
+        <h4>Helechos Publicados</h4>
+    </div>
+    <div class="shadow p-3 mb-5 bg-white rounded">
+        <div class="row">
+            <div class="col">
+                <button type="button" class="btn btn-dark" (click)="AbrirModal('ModalFiltro')">Filtrar por Etiqueta</button>
+                <button type="button" class="btn btn-warning ml-2" (click)="TraerHelechos()">Reiniciar Busqueda</button>
+            </div>
+        </div>
+        <div class="row justify-content-center">         
+            <div class="col-11">
+                <div class="row mt-2 justify-content-center">
+                    <table class="table table-hover" style="overflow:auto;">
+                        <thead>
+                            <tr class="form-group" style="font-size:smaller;">
+                                <td><input [(ngModel)]="txtrecordNumber" (ngModelChange)="FiltrarRango()" type="text" class="form-control"></td>
+                                <td><input [(ngModel)]="txtPersonName" (ngModelChange)="FiltrarRango()" type="text" class="form-control"></td>
+                                <td><input [(ngModel)]="txtDateSupplied" (ngModelChange)="FiltrarRango()" type="text" class="form-control"></td>
+                                <td><input [(ngModel)]="txtCollectors" (ngModelChange)="FiltrarRango()" type="text" class="form-control"></td>
+                                <td><input [(ngModel)]="txtCountryName" (ngModelChange)="FiltrarRango()" type="text" class="form-control"></td>
+                                <td><input [(ngModel)]="txtLocality" (ngModelChange)="FiltrarRango()" type="text" class="form-control"></td>
+                                <td><input [(ngModel)]="txtFamily" (ngModelChange)="FiltrarRango()" type="text" class="form-control"></td>
+                                <td><input [(ngModel)]="txtGenus" (ngModelChange)="FiltrarRango()" type="text" class="form-control"></td>
+                                <td><input [(ngModel)]="txtSpecies" (ngModelChange)="FiltrarRango()" type="text" class="form-control"></td>
+                            </tr>
+
+                            <tr>
+                                <th>RecordNumber</th>
+                                <th>PersonName</th>
+                                <th>Fecha</th>
+                                <th>Collectors</th>
+                                <th>Country</th>
+                                <th>Locality</th>
+                                <th>Family</th>
+                                <th>Genus</th>
+                                <th>Species</th>
+                            </tr>
+
+                        </thead>
+                        
+                        <tbody>
+                
+                            <tr *ngFor="let x of Helechos_Filtro | paginate:{id:'pagination', itemsPerPage:10,currentPage:pageActual}" class="border-top border-bottom">
+                                <td><u style="color: blue; cursor: pointer;" (click) = "TraerDetalleHelecho(x.recordNumber)">{{x.recordNumber}}</u></td>
+                                <td>{{x.PersonName}}</td>
+                                <td>{{x.DateSupplied.split(' ')[0]}}</td>
+                                <td>{{x.Collectors}}</td>
+                                <td>{{x.CountryName}}</td>
+                                <td>{{x.Locality}}</td>
+                                <td>{{x.Family}}</td>
+                                <td>{{x.Genus}}</td>
+                                <td>{{x.Species}}</td>
+    
+                
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                    <div *ngIf="helechos.length > 10">
+                        <pagination-controls id='pagination' (pageChange)="pageActual=$event"></pagination-controls>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="mostrar==true">
+    <div class="row justify-content-center" style="margin-top: 10%;">
+        <img src="assets/Spiner.gif" alt="">
+    </div>
+</div>
+
+
+
+<div style="display: none;" id="DetalleHelecho">
+    <div class="mt-3 shadow p-3 mb-5 bg-white rounded" style="margin: 20%;">
+        <div class="row">
+            <div class="col-9">
+                <h3 class="ml-2">Información Helecho N°: {{recordNumber}}</h3>
+            </div>
+            <div class="col-3 align-self-end">
+                <button type="button" class="btn btn-success" *ngIf="Hd_loc == 1" (click)="TraerDatosMapa()">Ubicación</button>
+                <button type="button" class="btn btn-success ml-3" (click)="ReiniciarDetHelecho()">Volver</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img [src]="getSafeUrl()" alt="" style="width: 100%; cursor: pointer;" (click)="MostrarHelecho()" (load)= "AbrirDetalle()">
+            </div>
+            <div class="col">
+                <p><strong>Genus: </strong>{{Genus}}</p>
+                <p><strong>GenusQualifier: </strong>{{GenusQualifier}}</p>
+                <p><strong>Species: </strong>{{Species}}</p>
+                <p><strong>Author: </strong>{{Author}}</p>
+                <p><strong>InfraSpecificRank: </strong>{{InfraSpecificRank}}</p>
+                <p><strong>InfraSpecificEpithet: </strong>{{InfraSpecificEpithet}}</p>
+                <p><strong>InfraSpecificAuthor: </strong>{{InfraSpecificAuthor}}</p>
+                <p><strong>PlantNameCode: </strong>{{PlantNameCode}}</p>
+                <p><strong>Identifier: </strong>{{Identifier}}</p>
+            </div>
+            <div class="col">
+                <p><strong>TypeStatus: </strong>{{TypeStatus}}</p>
+                <p><strong>Categorias: </strong>{{Categorias}}</p>
+                <p><strong>Project: </strong>{{Project}}</p>
+                <p><strong>InstitutionCode: </strong>{{InstitutionCode}}</p>
+                <p><strong>PersonName: </strong>{{PersonName}}</p>
+                <p><strong>DateSupplied: </strong>{{DateSupplied}}</p>
+                <p><strong>Collectors: </strong>{{Collectors}}</p>
+                <p><strong>DateLastModified: </strong>{{DateLastModified}}</p>
+                <p><strong>UnitTypeStatus: </strong>{{UnitTypeStatus}}</p>
+            </div>
+            <div class="col">
+                
+                <p><strong>CountryName: </strong>{{CountryName}}</p>
+                <p><strong>Locality: </strong>{{Locality}}</p>
+                <p><strong>RelatedUnitID: </strong>{{RelatedUnitID}}</p>
+                <p><strong>Notes: </strong>{{Notes}}</p>
+                <p><strong>Family: </strong>{{Family}}</p>
+
+            </div>
+        </div>
+    </div>
+    <div *ngIf="categorias_he.length > 0" class="mt-3 shadow p-3 mb-5 bg-white rounded" style="margin-left: 20%; margin-right: 20%;">
+        <div class="row justify-content-center">
+            
+            <h3>Categorias</h3>
+            
+            <div class="col-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">Nombre categoría</th>
+
+                        </tr>
+
+                    </thead>
+                    
+                    <tbody>
+            
+                        <tr *ngFor="let grupo of categorias_he" class="border-top border-bottom">
+                            <td style="text-align: center;">{{grupo.GRUPO_NOMBRE}}</td>
+
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="ModalMapa" class="modal-mapa" style="z-index: 999999;">
+    <div class="modal-content-mapa">
+        <div class="modal-header">
+            <span class="close icons" id="close" (click)="CerrarModal('ModalMapa')">&times;</span>
+        </div>
+        <div class="modal-body" >
+            <div class="contenedor" id="mapa">
+                <div class="mt-3 shadow p-3 mb-5 bg-white rounded" style="height: 600px;">
+                    <div class="row">
+                        <h3 class="ml-2">Ubicación</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="map-frame">
+                                <div id="map">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="ModalImagen" class="modal-imagen" style="z-index: 999999;">
+    <div class="modal-content-imagen">
+        <div class="modal-header">
+            <span class="close icons" id="close" (click)="CerrarModalImagen()">&times;</span>
+        </div>
+        <div class="modal-body" >
+                <lib-ngx-image-zoom
+                [thumbImage]=thumbnail
+                [fullImage]=fullimg
+                [enableScrollZoom] = true
+                [enableLens] = true
+                [lensWidth] = 200
+                [lensHeight] = 200
+                [circularLens] = true
+                ></lib-ngx-image-zoom>
+        </div>
+    </div>
+</div>
+
+
+<div id="ModalFiltro" class="modal" style="z-index: 100000009;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close icons" id="close" (click)="CerrarModal('ModalFiltro')">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-7">
+                    <h3 class="ml-3">Categorias</h3>
+                </div>
+                <div class="col-3">
+                    <ng-select [(ngModel)]="cat">
+                        <ng-option  [value]="-1" >Seleccionar</ng-option>
+                        <ng-option *ngFor="let item of categorias_b" [value]="item">{{item.GRUPO_NOMBRE}}</ng-option>
+                    </ng-select>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-dark" (click)="Agregar()">Añadir</button>
+                </div>
+                
+            </div>
+            <div class="row form-group">
+                <div class="col-12 ">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>Categoria</th>
+                            <th>Eliminar</th>
+                        </tr>
+                        <tr *ngFor="let x of categorias"  class="border-top border-bottom">
+                            <th>{{x.GRUPO_NOMBRE}}</th>
+                            <th><button type="button" class="btn btn-danger" (click)="Eliminar(x)">Eliminar</button></th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-1">
+                    <button type="button" class="btn btn-primary" (click)="BuscarHelechosCategorias()">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="ModalAlert" class="modal-alerta" style="z-index: 999999999999;">
+    <div class="modal-content-alerta">
+        <div class="modal-header">
+            <span class="close icons" id="close" (click)="CerrarModalAlert()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <h5 style="text-align:center; color: black; font-size: large;">{{alerta}}</h5>
+        </div>
+    </div>
+</div>
+
+
+
